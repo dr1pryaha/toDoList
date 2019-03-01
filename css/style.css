@@ -1,13 +1,16 @@
 body{
 	padding: 0;
 	margin: 0;
+ 	width: 100%;
+    height: 100%;
 }
 
-input{
+.head-field input{
 	width: 500px;
 	height: 30px;
 	padding: 5px;
-	position: relative;
+	display: block;
+	position: absolute;
 	left: 50%;
 	margin-left:-250px;
 	top: 50px;
