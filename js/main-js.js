@@ -5,16 +5,15 @@ window.onload = function(){
 /*Проверка на наличие текста в поле ввода*/
 	function checkText (text) {
 		if (inputField.value.length !== 0){
-			keydownHandler();
-		};
-		else{
-			alert("Введите заметку!");
+			return true;
+		}else{
+			return false;
 		}
 	};
 
 /*Функция создания списка и обработки нажатия клавиши*/
 	let keydownHandler = inputField.addEventListener('keydown', function (evt) {
-		if(evt.keyCode === 13){
+		if(evt.keyCode === 13 && checkText() === true){
 			let div = document.createElement('div');
 			let icon = document.createElement('i');
 			icon.className ="fa-li fa fa-spinner fa-spin";
