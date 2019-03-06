@@ -5,6 +5,7 @@ body{
     height: 100%;
 }
 
+/*Поле ввода текста*/
 .head-field input{
 	width: 500px;
 	height: 30px;
@@ -19,4 +20,26 @@ body{
 	box-shadow: 0 0 5px rgba(0,0,0,0.5);
 	border-radius: 30px;
 	outline:none;	//убирает рамку при щелчке по инпуту
+}
+
+/*Выпадающий список*/
+.list-event .to-do-list {
+	width: 460px;
+	height: 30px;
+	display: block;
+	left: 50%;
+	margin-left:-250px;
+	top: 100px;
+	text-align: left;
+	vertical-align: middle;
+	padding-top: 10px;
+	padding-left: 40px;
+	cursor: pointer;
+  	position: relative;
+  	background: #eee;
+}
+
+/*Другой цвет для нечетных элементов списка*/
+.list-event .to-do-list:nth-child(odd) {
+  background: #f9f9f9;
 }
