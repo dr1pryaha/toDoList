@@ -18,12 +18,13 @@ body{
 	text-align: center;
 	border: 1px solid #999999;
 	box-shadow: 0 0 5px rgba(0,0,0,0.5);
-	border-radius: 30px;
+	border-radius: 5px;
 	outline:none;	//убирает рамку при щелчке по инпуту
 }
 
 /*Выпадающий список*/
 .list-event .to-do-list {
+
 	width: 460px;
 	height: 30px;
 	display: block;
@@ -42,4 +43,9 @@ body{
 /*Другой цвет для нечетных элементов списка*/
 .list-event .to-do-list:nth-child(odd) {
   background: #f9f9f9;
+}
+
+input::-webkit-input-placeholder { 
+	text-align: left; 
+	padding-left: 10px;
 }
