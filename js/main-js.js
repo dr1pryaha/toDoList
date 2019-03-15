@@ -1,6 +1,6 @@
 window.onload = function(){
-	let inputField = document.querySelector('input[name = entry-field]');
-	let sectionList = document.querySelector('.list-event');
+	let inputField = document.querySelector('.entry-field');
+	let sectionList = document.querySelector('.to-do-list');
 
 /*Проверка на наличие текста в поле ввода*/
 	function checkText (text) {
@@ -10,17 +10,17 @@ window.onload = function(){
 			return false;
 		}
 	};
-
-/*Функция создания списка и обработки нажатия клавиши*/
+/*Функция создания списка*/
+	let createToDoItem = function(){
+		let div = document.createElement('div');
+		div.className = 'to-do-item';
+		div.innerHTML = inputField.value;
+		sectionList.appendChild(div);
+	}
+/*Функция обработки нажатия клавиши*/
 	let keydownHandler = inputField.addEventListener('keydown', function (evt) {
 		if(evt.keyCode === 13 && checkText() === true){
-			let div = document.createElement('div');
-			let icon = document.createElement('i');
-			icon.className ='fa-li fa fa-spinner fa-spin';
-			div.className = 'to-do-list';
-			div.innerHTML = inputField.value;
-			sectionList.appendChild(div);
-			div.appendChild(icon);
+			createToDoItem();
 			inputField.value = '';
 		}
 		return sectionList;
