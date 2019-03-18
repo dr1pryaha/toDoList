@@ -28,7 +28,7 @@ body{
 
 	width: 475px;
 	height: 20px;
-	display: block;
+	display: flex;
 	left: 50%;
 	margin-left:-250px;
 	margin-top: 5px;
@@ -44,4 +44,11 @@ body{
 	background-color: #ffffff;
 }
 
+.to-do-list .to-do-item .fa{
+	position: absolute;
+	height: auto;
+	width: auto;
+	left: 93%;
+	bottom: 6px;
+}
 

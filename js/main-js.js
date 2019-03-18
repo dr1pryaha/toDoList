@@ -16,6 +16,13 @@ window.onload = function(){
 		div.className = 'to-do-item';
 		div.innerHTML = inputField.value;
 		sectionList.appendChild(div);
+		let icon = document.createElement('i');
+		icon.className = 'fa fa-window-close';
+		div.appendChild(icon);
+
+		let clickHandler = icon.addEventListener('click', function (){
+			sectionList.removeChild(div);
+	});
 	}
 /*Функция обработки нажатия клавиши*/
 	let keydownHandler = inputField.addEventListener('keydown', function (evt) {
@@ -25,6 +32,7 @@ window.onload = function(){
 		}
 		return sectionList;
 	});
+
 
 	/*let markComplete = sectionList.addEventListener('click', function (evt) {
 		let divComplete = document.querySelector('.to-do-list');
