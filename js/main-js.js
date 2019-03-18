@@ -10,6 +10,7 @@ window.onload = function(){
 			return false;
 		}
 	};
+
 /*Функция создания списка*/
 	let createToDoItem = function(){
 		let div = document.createElement('div');
@@ -20,10 +21,12 @@ window.onload = function(){
 		icon.className = 'fa fa-window-close';
 		div.appendChild(icon);
 
+/*Функция обработки нажатия кнопки мыши*/
 		let clickHandler = icon.addEventListener('click', function (){
 			sectionList.removeChild(div);
 	});
 	}
+
 /*Функция обработки нажатия клавиши*/
 	let keydownHandler = inputField.addEventListener('keydown', function (evt) {
 		if(evt.keyCode === 13 && checkText() === true){
