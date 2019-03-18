@@ -32,6 +32,8 @@ window.onload = function(){
 		if(evt.keyCode === 13 && checkText() === true){
 			createToDoItem();
 			inputField.value = '';
+		} else if(evt.keyCode === 13 && checkText() === false){
+			alert("Введите текст предстоящего дела");
 		}
 		return sectionList;
 	});
