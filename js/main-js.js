@@ -25,15 +25,31 @@ window.onload = function(){
 		let clickHandler = icon.addEventListener('click', function (){
 			sectionList.removeChild(div);
 	});
+
+/*Функция проверки одинаковых дел*/
+		let checkSameCases = function(){
+			for (var i = 0; i < sectionList.length; i++){
+				if (inputField.value === sectionList[i].value) {
+					return true;
+				}else {
+					return false;
+				}
+			}
+		}
+		
 	}
+
+
 
 /*Функция обработки нажатия клавиши*/
 	let keydownHandler = inputField.addEventListener('keydown', function (evt) {
-		if(evt.keyCode === 13 && checkText() === true){
+		if(evt.keyCode === 13 && checkText() === true) {
 			createToDoItem();
 			inputField.value = '';
 		} else if(evt.keyCode === 13 && checkText() === false){
 			alert("Введите текст предстоящего дела");
+		} else if (evt.keyCode === 13 && checkSameCases() === true) {
+			alert("Такое дело уже запланированно");
 		}
 		return sectionList;
 	});
