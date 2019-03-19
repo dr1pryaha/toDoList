@@ -3,7 +3,7 @@ window.onload = function(){
 	let sectionList = document.querySelector('.to-do-list');
 
 /*Проверка на наличие текста в поле ввода*/
-	function checkText (text) {
+	function checkText () {
 		if (inputField.value.length !== 0){
 			return true;
 		}else{
@@ -28,18 +28,11 @@ window.onload = function(){
 
 /*Функция проверки одинаковых дел*/
 		let checkSameCases = function(){
-			for (var i = 0; i < sectionList.length; i++){
-				if (inputField.value === sectionList[i].value) {
-					return true;
-				}else {
-					return false;
-				}
-			}
+			let toDoItem_list = document.querySelectorAll('.to-do-item');
+			let toDoItem_array = Array.prototype.slice.call(toDoItem_list);
+			toDoItem_array.some(curVal => inputField.value === curVal ? true : false);
 		}
-		
 	}
-
-
 
 /*Функция обработки нажатия клавиши*/
 	let keydownHandler = inputField.addEventListener('keydown', function (evt) {
