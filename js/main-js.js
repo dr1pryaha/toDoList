@@ -25,14 +25,16 @@ window.onload = function(){
 		let clickHandler = icon.addEventListener('click', function (){
 			sectionList.removeChild(div);
 	});
-
+	
 /*Функция проверки одинаковых дел*/
 		let checkSameCases = function(){
 			let toDoItem_list = document.querySelectorAll('.to-do-item');
 			let toDoItem_array = Array.prototype.slice.call(toDoItem_list);
-			toDoItem_array.some(curVal => inputField.value === curVal ? true : false);
+			let toDoItem_result = toDoItem_array.some(curVal => curVal.textContent === inputField.value ? true : false);
+			return toDoItem_result;
 		}
-	}
+		console.log(checkSameCases());
+	};
 
 /*Функция обработки нажатия клавиши*/
 	let keydownHandler = inputField.addEventListener('keydown', function (evt) {
