@@ -3,7 +3,7 @@ window.onload = function(){
 	let sectionList = document.querySelector('.to-do-list');
 
 /*Проверка на наличие текста в поле ввода*/
-	function checkText () {
+	function isInputEmpty () {
 		if (inputField.value.length !== 0){
 			return true;
 		}else{
@@ -27,28 +27,34 @@ window.onload = function(){
 		});
 	};
 /*Функция проверки одинаковых дел*/
-		let checkSameCases = function(){
-			let toDoItem_list = document.querySelectorAll('.to-do-item');
-			let toDoItem_array = Array.from(toDoItem_list);
-			let toDoItem_result = toDoItem_array.some(curVal => curVal.textContent === inputField.value);
-			return toDoItem_result;
-		};
-		console.log(checkSameCases());
+	let areThereSameTodos = function(){
+		let toDoItem_list = document.querySelectorAll('.to-do-item');
+		let toDoItem_array = Array.from(toDoItem_list);
+		let toDoItem_result = toDoItem_array.some(curVal => curVal.textContent === inputField.value);
+		return toDoItem_result;
+	};
+		console.log(areThereSameTodos());
 	
+	let isEnterPressed = function(evt){
+		if (evt.keyCode === 13) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 
 /*Функция обработки нажатия клавиши*/
-	let keydownHandler = inputField.addEventListener('keydown', function (evt) {
-		if(evt.keyCode === 13 && checkText() === true && checkSameCases() !== true) {
+	inputField.addEventListener('keydown', function (evt) {
+		if (isEnterPressed(evt) && !isInputEmpty()) {
+			alert("Введите текст предстоящего дела");
+		} else if(isEnterPressed(evt) && areThereSameTodos()) {
+			alert("Такое дело уже запланированно");
+		} else if (isEnterPressed(evt)) {
 			createToDoItem();
 			inputField.value = '';
-		} else if (evt.keyCode === 13 && checkText() === true) {
-			alert("Такое дело уже запланированно");
-		} else if (evt.keyCode === 13 && checkText() === false) {
-			alert("Введите текст предстоящего дела");
-		} 
-		return sectionList;
+		}
 	});
-
 
 	/*let markComplete = sectionList.addEventListener('click', function (evt) {
 		let divComplete = document.querySelector('.to-do-list');
