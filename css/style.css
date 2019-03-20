@@ -52,3 +52,9 @@ body{
 	bottom: 6px;
 }
 
+.to-do-list .to-do-item .to-do-check {
+	position: absolute;
+	height: auto;
+	width: auto;
+	right: 103%;
+}

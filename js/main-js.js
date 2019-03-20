@@ -17,15 +17,28 @@ window.onload = function(){
 		div.className = 'to-do-item';
 		div.innerHTML = inputField.value;
 		sectionList.appendChild(div);
+
 		let icon = document.createElement('i');
 		icon.className = 'fa fa-window-close';
 		div.appendChild(icon);
 
-/*Функция обработки нажатия кнопки мыши*/
+		let checkBox = document.createElement('input');
+		checkBox.type = 'checkbox';
+		checkBox.className = 'to-do-check';
+		div.appendChild(checkBox);
+
+
+/*Функция удаления по нажатию на клавишу мыши*/
 		let clickHandler = icon.addEventListener('click', function (){
 			sectionList.removeChild(div);
 		});
+
+/*Функция выделения заметки*/
+		let checkHandler = checkBox.addEventListener('click', function (){
+			div.style.setProperty("text-decoration", "line-through");
+		});
 	};
+
 /*Функция проверки одинаковых дел*/
 	let areThereSameTodos = function(){
 		let toDoItem_list = document.querySelectorAll('.to-do-item');
@@ -33,8 +46,8 @@ window.onload = function(){
 		let toDoItem_result = toDoItem_array.some(curVal => curVal.textContent === inputField.value);
 		return toDoItem_result;
 	};
-		console.log(areThereSameTodos());
-	
+
+/*Функция проверки нажатия клавиши Enter*/
 	let isEnterPressed = function(evt){
 		if (evt.keyCode === 13) {
 			return true;
@@ -43,8 +56,7 @@ window.onload = function(){
 		}
 	}
 
-
-/*Функция обработки нажатия клавиши*/
+/*Функция обработки нажатия клавиши Enter*/
 	inputField.addEventListener('keydown', function (evt) {
 		if (isEnterPressed(evt) && !isInputEmpty()) {
 			alert("Введите текст предстоящего дела");
