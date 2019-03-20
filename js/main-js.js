@@ -29,8 +29,8 @@ window.onload = function(){
 /*Функция проверки одинаковых дел*/
 		let checkSameCases = function(){
 			let toDoItem_list = document.querySelectorAll('.to-do-item');
-			let toDoItem_array = Array.prototype.slice.call(toDoItem_list);
-			let toDoItem_result = toDoItem_array.some(curVal => curVal.textContent === inputField.value ? true : false);
+			let toDoItem_array = Array.from(toDoItem_list);
+			let toDoItem_result = toDoItem_array.some(curVal => curVal.textContent === inputField.value);
 			return toDoItem_result;
 		};
 		console.log(checkSameCases());
@@ -41,7 +41,7 @@ window.onload = function(){
 		if(evt.keyCode === 13 && checkText() === true && checkSameCases() !== true) {
 			createToDoItem();
 			inputField.value = '';
-		} else if (evt.keyCode === 13 && checkText() === true && checkSameCases() === true) {
+		} else if (evt.keyCode === 13 && checkText() === true) {
 			alert("Такое дело уже запланированно");
 		} else if (evt.keyCode === 13 && checkText() === false) {
 			alert("Введите текст предстоящего дела");
