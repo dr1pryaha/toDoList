@@ -24,28 +24,28 @@ window.onload = function(){
 /*Функция обработки нажатия кнопки мыши*/
 		let clickHandler = icon.addEventListener('click', function (){
 			sectionList.removeChild(div);
-	});
-	
+		});
+	};
 /*Функция проверки одинаковых дел*/
 		let checkSameCases = function(){
 			let toDoItem_list = document.querySelectorAll('.to-do-item');
 			let toDoItem_array = Array.prototype.slice.call(toDoItem_list);
 			let toDoItem_result = toDoItem_array.some(curVal => curVal.textContent === inputField.value ? true : false);
 			return toDoItem_result;
-		}
+		};
 		console.log(checkSameCases());
-	};
+	
 
 /*Функция обработки нажатия клавиши*/
 	let keydownHandler = inputField.addEventListener('keydown', function (evt) {
-		if(evt.keyCode === 13 && checkText() === true) {
+		if(evt.keyCode === 13 && checkText() === true && checkSameCases() !== true) {
 			createToDoItem();
 			inputField.value = '';
-		} else if(evt.keyCode === 13 && checkText() === false){
-			alert("Введите текст предстоящего дела");
-		} else if (evt.keyCode === 13 && checkSameCases() === true) {
+		} else if (evt.keyCode === 13 && checkText() === true && checkSameCases() === true) {
 			alert("Такое дело уже запланированно");
-		}
+		} else if (evt.keyCode === 13 && checkText() === false) {
+			alert("Введите текст предстоящего дела");
+		} 
 		return sectionList;
 	});
 
