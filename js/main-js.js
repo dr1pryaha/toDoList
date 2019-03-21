@@ -37,7 +37,7 @@ window.onload = function(){
 		let checkHandler = checkBox.addEventListener('change', function (){
 			if (checkBox.checked) {
 				div.className = 'to-do-checked';
-				icon.className = 'fa-checked fa-window-close';
+				icon.className = 'fa-checked fa fa-window-close';
 				checkBox.className = 'to-do-check-checked';
 			} else {
 				div.className = 'to-do-item';

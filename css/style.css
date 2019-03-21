@@ -44,7 +44,7 @@ body{
 	background-color: #ffffff;
 }
 
-.to-do-item .fa, .fa-checked{
+.to-do-item .fa, .fa-checked {
 	position: absolute;
 	height: auto;
 	width: auto;
