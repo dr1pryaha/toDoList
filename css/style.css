@@ -24,7 +24,7 @@ body{
 }
 
 /*Выпадающий список*/
-.to-do-list .to-do-item {
+.to-do-list .to-do-item, .to-do-checked {
 
 	width: 475px;
 	height: 20px;
@@ -44,7 +44,7 @@ body{
 	background-color: #ffffff;
 }
 
-.to-do-list .to-do-item .fa{
+.to-do-item .fa, .fa-checked{
 	position: absolute;
 	height: auto;
 	width: auto;
@@ -52,9 +52,14 @@ body{
 	bottom: 6px;
 }
 
-.to-do-list .to-do-item .to-do-check {
+.to-do-item .to-do-check, .to-do-check-checked {
 	position: absolute;
 	height: auto;
 	width: auto;
-	right: 103%;
+	left: -25px;
+	
+}
+
+.to-do-checked {
+	text-decoration: line-through;
 }

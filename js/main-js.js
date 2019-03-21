@@ -34,8 +34,16 @@ window.onload = function(){
 		});
 
 /*Функция выделения заметки*/
-		let checkHandler = checkBox.addEventListener('click', function (){
-			div.style.setProperty("text-decoration", "line-through");
+		let checkHandler = checkBox.addEventListener('change', function (){
+			if (checkBox.checked) {
+				div.className = 'to-do-checked';
+				icon.className = 'fa-checked fa-window-close';
+				checkBox.className = 'to-do-check-checked';
+			} else {
+				div.className = 'to-do-item';
+				icon.className = 'fa fa-window-close';
+				checkBox.className = 'to-do-check';
+			}
 		});
 	};
 
