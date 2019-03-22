@@ -74,7 +74,7 @@ body{
 	top: 85px;
 }
 
-.button-list .button, .allBtn {
+.button-list .button, .all-btn {
 	display: flex;
 	height: 25px;
 	margin: auto;
@@ -85,7 +85,7 @@ body{
 	outline:none;
 }
 
-.allBtn-clicked, .not-done-btn-clicked, .done-btn-clicked {
+.all-btn.all-btn-clicked, .not-done-btn.not-done-btn-clicked, .done-btn.done-btn-clicked {
 	display: flex;
 	height: 25px;
 	margin: auto;

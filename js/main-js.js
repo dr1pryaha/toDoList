@@ -81,17 +81,25 @@ window.onload = function(){
 
 /*Функция фильтрации 'Все'*/
 	allBtn.addEventListener('click', function(){
-		allBtn.className = 'allBtn-clicked';
+		allBtn.classList.toggle('all-btn-clicked');
+		sectionList;
 	})
 
 /*Функция фильтрации 'Несделанные'*/
 	notDoneBtn.addEventListener('click', function(){
-		notDoneBtn.className = 'not-done-btn-clicked';
+		notDoneBtn.classList.toggle('not-done-btn-clicked');
+		let toDoItem_list = document.querySelectorAll('.to-do-item');
+		let toDoItem_checked = document.querySelectorAll('.to-do-checked');
+		let toDoItem_array = Array.from(toDoItem_checked);
+
+			toDoItem_list.removeChild(toDoItem_array);
+
+		console.log(sectionList);
 	})
 
 /*Функция фильтрации 'Сделанные'*/
 	doneBtn.addEventListener('click', function(){
-		doneBtn.className = 'done-btn-clicked';
+		doneBtn.classList.toggle('done-btn-clicked');
 	})
 	/*let markComplete = sectionList.addEventListener('click', function (evt) {
 		let divComplete = document.querySelector('.to-do-list');
