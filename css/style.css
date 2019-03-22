@@ -74,12 +74,23 @@ body{
 	top: 85px;
 }
 
-.button-list .button {
+.button-list .button, .allBtn {
 	display: flex;
 	height: 25px;
 	margin: auto;
 	background: #eee;
   	border: 1px solid #999999;
+	border-radius: 10px;
+	background-color: #ffffff;
+	outline:none;
+}
+
+.allBtn-clicked, .not-done-btn-clicked, .done-btn-clicked {
+	display: flex;
+	height: 25px;
+	margin: auto;
+	background: #eee;
+  	border: 2px solid #4A76A8;
 	border-radius: 10px;
 	background-color: #ffffff;
 	outline:none;

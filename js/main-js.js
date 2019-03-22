@@ -1,6 +1,9 @@
 window.onload = function(){
 	let inputField = document.querySelector('.entry-field');
 	let sectionList = document.querySelector('.to-do-list');
+	let allBtn = document.querySelector('.all-btn');
+	let notDoneBtn = document.querySelector('.not-done-btn');
+	let doneBtn = document.querySelector('.done-btn');
 
 /*Проверка на наличие текста в поле ввода*/
 	function isInputEmpty () {
@@ -76,6 +79,20 @@ window.onload = function(){
 		}
 	});
 
+/*Функция фильтрации 'Все'*/
+	allBtn.addEventListener('click', function(){
+		allBtn.className = 'allBtn-clicked';
+	})
+
+/*Функция фильтрации 'Несделанные'*/
+	notDoneBtn.addEventListener('click', function(){
+		notDoneBtn.className = 'not-done-btn-clicked';
+	})
+
+/*Функция фильтрации 'Сделанные'*/
+	doneBtn.addEventListener('click', function(){
+		doneBtn.className = 'done-btn-clicked';
+	})
 	/*let markComplete = sectionList.addEventListener('click', function (evt) {
 		let divComplete = document.querySelector('.to-do-list');
 		let iconSpin = document.querySelector('.fa-li fa fa-spinner fa-spin');
