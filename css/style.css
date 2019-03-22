@@ -63,3 +63,24 @@ body{
 .to-do-checked {
 	text-decoration: line-through;
 }
+
+.button-list {
+	width: 500px;
+	height: 30px;
+	display: flex;
+	position: relative;
+	left: 50%;
+	margin-left:-250px;
+	top: 85px;
+}
+
+.button-list .button {
+	display: flex;
+	height: 25px;
+	margin: auto;
+	background: #eee;
+  	border: 1px solid #999999;
+	border-radius: 10px;
+	background-color: #ffffff;
+	outline:none;
+}
