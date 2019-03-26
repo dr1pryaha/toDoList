@@ -80,27 +80,38 @@ window.onload = function(){
 	});
 
 /*Функция фильтрации 'Все'*/
-	allBtn.addEventListener('click', function(){
+	let allBtnHandler = allBtn.addEventListener('click', function(){
 		allBtn.classList.toggle('all-btn-clicked');
-		sectionList;
-	})
+		notDoneBtn.className = 'not-done-btn';
+		doneBtn.className = 'done-btn';
+		let toDoItem_all = document.querySelectorAll('.to-do-checked-filtered, .to-do-not-checked-filtered');
+		let toDoItem_array_all = Array.from(toDoItem_all);
+		let toDoItem_result_all = toDoItem_array_all.map(curVal => curVal.className === 'to-do-checked-filtered' ? curVal.className = 'to-do-checked' : curVal.className = 'to-do-item');
+	});
 
 /*Функция фильтрации 'Несделанные'*/
-	notDoneBtn.addEventListener('click', function(){
+	let notDoneBtnHandler = notDoneBtn.addEventListener('click', function(){
 		notDoneBtn.classList.toggle('not-done-btn-clicked');
-		let toDoItem_list = document.querySelectorAll('.to-do-item');
-		let toDoItem_checked = document.querySelectorAll('.to-do-checked');
-		let toDoItem_array = Array.from(toDoItem_checked);
-
-			toDoItem_list.removeChild(toDoItem_array);
-
-		console.log(sectionList);
-	})
+		allBtn.className = 'all-btn';
+		doneBtn.className = 'done-btn';
+		if (notDoneBtn.classList.contains('not-done-btn-clicked')){
+			let toDoItem_checked = document.querySelectorAll('.to-do-checked');
+			let toDoItem_array_checked = Array.from(toDoItem_checked);
+			let toDoItem_result_checked = toDoItem_array_checked.map(curVal => curVal.className = 'to-do-checked-filtered');
+		} 
+	});
 
 /*Функция фильтрации 'Сделанные'*/
 	doneBtn.addEventListener('click', function(){
 		doneBtn.classList.toggle('done-btn-clicked');
-	})
+		allBtn.className = 'all-btn';
+		notDoneBtn.className = 'not-done-btn';
+		if (doneBtn.classList.contains('done-btn-clicked')){
+			let toDoItem_list = document.querySelectorAll('.to-do-item');
+			let toDoItem_array = Array.from(toDoItem_list);
+			let toDoItem_result = toDoItem_array.map(curVal => curVal.className = 'to-do-not-checked-filtered');
+		} 
+	});
 	/*let markComplete = sectionList.addEventListener('click', function (evt) {
 		let divComplete = document.querySelector('.to-do-list');
 		let iconSpin = document.querySelector('.fa-li fa fa-spinner fa-spin');

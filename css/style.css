@@ -56,12 +56,12 @@ body{
 	position: absolute;
 	height: auto;
 	width: auto;
-	left: -25px;
-	
+	left: -25px;	
 }
 
 .to-do-checked {
 	text-decoration: line-through;
+	opacity: 0.5;
 }
 
 .button-list {
@@ -74,7 +74,7 @@ body{
 	top: 85px;
 }
 
-.button-list .button, .all-btn {
+.button-list .button, .all-btn, .done-btn, .not-done-btn {
 	display: flex;
 	height: 25px;
 	margin: auto;
@@ -94,4 +94,12 @@ body{
 	border-radius: 10px;
 	background-color: #ffffff;
 	outline:none;
+}
+
+.to-do-checked-filtered {
+	display: none;
+}
+
+.to-do-not-checked-filtered {
+	display: none;
 }
