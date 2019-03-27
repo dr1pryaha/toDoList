@@ -25,7 +25,6 @@ body{
 
 /*Выпадающий список*/
 .to-do-list .to-do-item, .to-do-checked {
-
 	width: 475px;
 	height: 20px;
 	display: flex;
@@ -44,20 +43,14 @@ body{
 	background-color: #ffffff;
 }
 
-.to-do-item .fa.fa-window-close, .fa-checked {
+/*Иконка закрытия*/
+.fa-window-close, .fa-checked {
 	position: absolute;
 	height: auto;
 	width: auto;
 	left: 95%;
 	bottom: 6px;
-}
-
-.fa-window-close{
 	color: #C44732;
-}
-
-.to-do-check {
-	opacity: 0;
 }
 
 .fa-circle-thin, .fa-check-circle{
@@ -70,15 +63,13 @@ body{
 .fa-check-circle{
 	color: #5DC2AF;
 }
-.to-do-check-checked {
-	opacity: 0;
-}
 
-.to-do-item .to-do-check, .to-do-check-checked {
+.checkbox, .checkbox-checked {
 	position: absolute;
 	height: auto;
 	width: auto;
-	left: -25px;	
+	left: -25px;
+	opacity: 0;	
 }
 
 .to-do-checked {
@@ -96,7 +87,7 @@ body{
 	top: 85px;
 }
 
-.button-list .button, .all-btn, .done-btn, .not-done-btn {
+.button-list * {
 	display: flex;
 	height: 25px;
 	margin: auto;
@@ -107,7 +98,7 @@ body{
 	outline:none;
 }
 
-.all-btn.all-btn-clicked, .not-done-btn.not-done-btn-clicked, .done-btn.done-btn-clicked {
+.clicked {
 	display: flex;
 	height: 25px;
 	margin: auto;
@@ -118,10 +109,6 @@ body{
 	outline:none;
 }
 
-.to-do-checked-filtered {
-	display: none;
-}
-
-.to-do-not-checked-filtered {
+.to-do-checked-filtered, .to-do-not-checked-filtered {
 	display: none;
 }

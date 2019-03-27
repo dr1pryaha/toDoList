@@ -28,7 +28,7 @@ window.onload = function(){
 		let checkBox = document.createElement('input');
 		checkBox.type = 'checkbox';
 		checkBox.id = 'chk';
-		checkBox.className = 'to-do-check';
+		checkBox.className = 'checkbox';
 		div.appendChild(checkBox);
 
 		let iconBox = document.createElement('label');
@@ -48,11 +48,11 @@ window.onload = function(){
 				div.className = 'to-do-checked';
 				icon.className = 'fa-checked fa fa-window-close';
 				iconBox.className = 'fa fa-check-circle';
-				checkBox.className = 'to-do-check-checked';
+				checkBox.className = 'checkbox-checked';
 			} else {
 				div.className = 'to-do-item';
 				icon.className = 'fa fa-window-close';
-				checkBox.className = 'to-do-check';
+				checkBox.className = 'checkbox';
 				iconBox.className = 'fa fa-circle-thin';
 			}
 		});
@@ -87,50 +87,62 @@ window.onload = function(){
 		}
 	});
 
-/*Функция фильтрации 'Все'*/
-	let allBtnHandler = allBtn.addEventListener('click', function(){
-		allBtn.classList.toggle('all-btn-clicked');
-		notDoneBtn.className = 'not-done-btn';
-		doneBtn.className = 'done-btn';
+/*Функция сброса параметров фильтра*/
+	let resetFilterSettings = function(){
 		let toDoItem_all = document.querySelectorAll('.to-do-checked-filtered, .to-do-not-checked-filtered');
 		let toDoItem_array_all = Array.from(toDoItem_all);
-		let toDoItem_result_all = toDoItem_array_all.forEach(curVal => curVal.className === 'to-do-checked-filtered' ? curVal.className = 'to-do-checked' : curVal.className = 'to-do-item');
+		let toDoItem_result_all = toDoItem_array_all.forEach(curVal => {
+			if (curVal.className === 'to-do-checked-filtered') {
+				return curVal.className = 'to-do-checked';
+			} else {
+				return curVal.className = 'to-do-item';
+			};
+		});	
+	};
+
+/*Функция поиска элементов по классу*/
+	let searchElementsByClass = function(classEl){
+		let toDoItem_list = document.querySelectorAll(classEl);
+		let toDoItem_array = Array.from(toDoItem_list);
+		if (classEl === 'to-do-checked'){
+			let toDoItem_result = toDoItem_array.forEach(curVal => curVal.className = 'to-do-checked-filtered');
+			return toDoItem_result;
+		} else if (classEl === 'to-do-item'){
+			let toDoItem_result = toDoItem_array.forEach(curVal => curVal.className = 'to-do-not-checked-filtered');
+			return toDoItem_result;
+		};
+	};
+
+/*Функция фильтрации 'Все'*/
+	allBtn.addEventListener('click', function(){
+		allBtn.classList.toggle('clicked');
+		notDoneBtn.className = 'not-done-btn';
+		doneBtn.className = 'done-btn';
+		resetFilterSettings();
 	});
 
 /*Функция фильтрации 'Несделанные'*/
-	let notDoneBtnHandler = notDoneBtn.addEventListener('click', function(){
-		notDoneBtn.classList.toggle('not-done-btn-clicked');
+	notDoneBtn.addEventListener('click', function(){
+		notDoneBtn.classList.toggle('clicked');
 		allBtn.className = 'all-btn';
 		doneBtn.className = 'done-btn';
-		if (notDoneBtn.classList.contains('not-done-btn-clicked')){
-			let toDoItem_all = document.querySelectorAll('.to-do-checked-filtered, .to-do-not-checked-filtered');
-			let toDoItem_array_all = Array.from(toDoItem_all);
-			let toDoItem_result_all = toDoItem_array_all.forEach(curVal => curVal.className === 'to-do-checked-filtered' ? curVal.className = 'to-do-checked' : curVal.className = 'to-do-item');
-			let toDoItem_checked = document.querySelectorAll('.to-do-checked');
-			let toDoItem_array_checked = Array.from(toDoItem_checked);
-			let toDoItem_result_checked = toDoItem_array_checked.forEach(curVal => curVal.className = 'to-do-checked-filtered');
-		} 
+		if (notDoneBtn.classList.contains('clicked')){
+			resetFilterSettings();
+			searchElementsByClass('to-do-checked');
+		};
+		/*if (checkHandler()){
+
+		}*/
 	});
 
 /*Функция фильтрации 'Сделанные'*/
 	doneBtn.addEventListener('click', function(){
-		doneBtn.classList.toggle('done-btn-clicked');
+		doneBtn.classList.toggle('clicked');
 		allBtn.className = 'all-btn';
 		notDoneBtn.className = 'not-done-btn';
-		if (doneBtn.classList.contains('done-btn-clicked')){
-			let toDoItem_all = document.querySelectorAll('.to-do-checked-filtered, .to-do-not-checked-filtered');
-			let toDoItem_array_all = Array.from(toDoItem_all);
-			let toDoItem_result_all = toDoItem_array_all.forEach(curVal => curVal.className === 'to-do-checked-filtered' ? curVal.className = 'to-do-checked' : curVal.className = 'to-do-item');
-			let toDoItem_list = document.querySelectorAll('.to-do-item');
-			let toDoItem_array = Array.from(toDoItem_list);
-			let toDoItem_result = toDoItem_array.forEach(curVal => curVal.className = 'to-do-not-checked-filtered');
+		if (doneBtn.classList.contains('clicked')){
+			resetFilterSettings();
+			searchElementsByClass('to-do-item');
 		} 
 	});
-	/*let markComplete = sectionList.addEventListener('click', function (evt) {
-		let divComplete = document.querySelector('.to-do-list');
-		let iconSpin = document.querySelector('.fa-li fa fa-spinner fa-spin');
-		let iconComplete = document.createElement('i');
-		iconComplete.className = 'fa-li fa fa-check-square';
-		divComplete.replaceChild(iconComplete, iconSpin);
-	});*/
 }
