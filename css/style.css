@@ -44,12 +44,34 @@ body{
 	background-color: #ffffff;
 }
 
-.to-do-item .fa, .fa-checked {
+.to-do-item .fa.fa-window-close, .fa-checked {
 	position: absolute;
 	height: auto;
 	width: auto;
 	left: 95%;
 	bottom: 6px;
+}
+
+.fa-window-close{
+	color: #C44732;
+}
+
+.to-do-check {
+	opacity: 0;
+}
+
+.fa-circle-thin, .fa-check-circle{
+	position: absolute;
+	z-index: -1;
+	left: -22px;
+	top: 6px;
+}
+
+.fa-check-circle{
+	color: #5DC2AF;
+}
+.to-do-check-checked {
+	opacity: 0;
 }
 
 .to-do-item .to-do-check, .to-do-check-checked {
