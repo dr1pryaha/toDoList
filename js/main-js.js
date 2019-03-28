@@ -11,7 +11,7 @@ window.onload = function(){
 			return true;
 		}else{
 			return false;
-		}
+		};
 	};
 
 /*Функция создания списка*/
@@ -54,7 +54,7 @@ window.onload = function(){
 				icon.className = 'fa fa-window-close';
 				checkBox.className = 'checkbox';
 				iconBox.className = 'fa fa-circle-thin';
-			}
+			};
 		});
 	};
 
@@ -72,8 +72,8 @@ window.onload = function(){
 			return true;
 		} else {
 			return false;
-		}
-	}
+		};
+	};
 
 /*Функция обработки нажатия клавиши Enter*/
 	inputField.addEventListener('keydown', function (evt) {
@@ -84,32 +84,23 @@ window.onload = function(){
 		} else if (isEnterPressed(evt)) {
 			createToDoItem();
 			inputField.value = '';
-		}
+		};
 	});
 
 /*Функция сброса параметров фильтра*/
 	let resetFilterSettings = function(){
-		let toDoItem_all = document.querySelectorAll('.to-do-checked-filtered, .to-do-not-checked-filtered');
+		let toDoItem_all = document.querySelectorAll('.filtered');
 		let toDoItem_array_all = Array.from(toDoItem_all);
-		let toDoItem_result_all = toDoItem_array_all.forEach(curVal => {
-			if (curVal.className === 'to-do-checked-filtered') {
-				return curVal.className = 'to-do-checked';
-			} else {
-				return curVal.className = 'to-do-item';
-			};
-		});	
+		let toDoItem_result_all = toDoItem_array_all.forEach(curVal => curVal.classList.remove('filtered'));
+		return toDoItem_result_all;	
 	};
 
 /*Функция поиска элементов по классу*/
 	let searchElementsByClass = function(classEl){
 		let toDoItem_list = document.querySelectorAll(classEl);
 		let toDoItem_array = Array.from(toDoItem_list);
-		if (classEl === 'to-do-checked'){
-			let toDoItem_result = toDoItem_array.forEach(curVal => curVal.className = 'to-do-checked-filtered');
-			return toDoItem_result;
-		} else if (classEl === 'to-do-item'){
-			let toDoItem_result = toDoItem_array.forEach(curVal => curVal.className = 'to-do-not-checked-filtered');
-			return toDoItem_result;
+		if (classEl === 'to-do-checked' || 'to-do-item'){
+			return toDoItem_array.forEach(curVal => curVal.classList.add('filtered'));
 		};
 	};
 
@@ -118,7 +109,7 @@ window.onload = function(){
 		allBtn.classList.toggle('clicked');
 		notDoneBtn.className = 'not-done-btn';
 		doneBtn.className = 'done-btn';
-		resetFilterSettings();
+		resetFilterSettings();	
 	});
 
 /*Функция фильтрации 'Несделанные'*/
@@ -127,8 +118,8 @@ window.onload = function(){
 		allBtn.className = 'all-btn';
 		doneBtn.className = 'done-btn';
 		if (notDoneBtn.classList.contains('clicked')){
-			resetFilterSettings();
 			searchElementsByClass('to-do-checked');
+			resetFilterSettings();
 		};
 		/*if (checkHandler()){
 
@@ -140,9 +131,9 @@ window.onload = function(){
 		doneBtn.classList.toggle('clicked');
 		allBtn.className = 'all-btn';
 		notDoneBtn.className = 'not-done-btn';
-		if (doneBtn.classList.contains('clicked')){
-			resetFilterSettings();
+		if (doneBtn.classList.contains('clicked')){	
 			searchElementsByClass('to-do-item');
-		} 
+			resetFilterSettings();
+		};
 	});
 }

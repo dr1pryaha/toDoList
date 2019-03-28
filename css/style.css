@@ -5,6 +5,17 @@ body{
     height: 100%;
 }
 
+h1 {
+	font-family: 'Permanent Marker', cursive;
+	font-size: 48px;
+	color: #F82335;
+	opacity: 0.5;
+	text-align: center;
+	top: 20px;
+	padding: 0;
+	margin: 0;
+	height: 50px;
+}
 /*Поле ввода текста*/
 .head-field .entry-field{
 	width: 500px;
@@ -13,8 +24,9 @@ body{
 	display: block;
 	position: absolute;
 	left: 50%;
+	margin-top: 0;
 	margin-left:-250px;
-	top: 50px;
+	top: 60px;
 	text-align: left;
 	padding-left: 20px;
 	border: 1px solid #999999;
@@ -31,7 +43,7 @@ body{
 	left: 50%;
 	margin-left:-250px;
 	margin-top: 5px;
-	top: 85px;
+	top: 45px;
 	text-align: left;
 	padding: 5px;
 	padding-left: 20px;
@@ -84,7 +96,7 @@ body{
 	position: relative;
 	left: 50%;
 	margin-left:-250px;
-	top: 85px;
+	top: 45px;
 }
 
 .button-list * {
@@ -109,6 +121,6 @@ body{
 	outline:none;
 }
 
-.to-do-checked-filtered, .to-do-not-checked-filtered {
+.filtered {
 	display: none;
 }
