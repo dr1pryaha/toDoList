@@ -99,8 +99,8 @@ window.onload = function(){
 	let searchElementsByClass = function(classEl){
 		let toDoItem_list = document.querySelectorAll(classEl);
 		let toDoItem_array = Array.from(toDoItem_list);
-		if (classEl === 'to-do-checked' || 'to-do-item'){
-			return toDoItem_array.forEach(curVal => curVal.classList.add('filtered'));
+		if (classEl === '.to-do-checked' || '.to-do-item'){
+			toDoItem_array.forEach(curVal => curVal.classList.add('filtered'));
 		};
 	};
 
@@ -118,8 +118,9 @@ window.onload = function(){
 		allBtn.className = 'all-btn';
 		doneBtn.className = 'done-btn';
 		if (notDoneBtn.classList.contains('clicked')){
-			searchElementsByClass('to-do-checked');
 			resetFilterSettings();
+			searchElementsByClass('.to-do-checked');
+			
 		};
 		/*if (checkHandler()){
 
@@ -132,8 +133,8 @@ window.onload = function(){
 		allBtn.className = 'all-btn';
 		notDoneBtn.className = 'not-done-btn';
 		if (doneBtn.classList.contains('clicked')){	
-			searchElementsByClass('to-do-item');
-			resetFilterSettings();
+			resetFilterSettings();	
+			searchElementsByClass('.to-do-item');		
 		};
 	});
 }
