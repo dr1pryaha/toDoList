@@ -95,15 +95,33 @@ window.onload = function(){
 		return toDoItem_result_all;	
 	};
 
-/*Функция поиска элементов по классу*/
-	let searchElementsByClass = function(classEl){
+/*Функция фильтрации по классу*/
+	let  filterElementsByClass = function(classEl){
 		let toDoItem_list = document.querySelectorAll(classEl);
 		let toDoItem_array = Array.from(toDoItem_list);
-		if (classEl === '.to-do-checked' || '.to-do-item'){
 			toDoItem_array.forEach(curVal => curVal.classList.add('filtered'));
-		};
 	};
 
+	let btnHandler = function(btn){
+		function clickedFunc(e){
+			e.currentTarget.classList.add('clicked');
+			resetFilterSettings();
+				if (btn === notDoneBtn) {
+					filterElementsByClass('.to-do-checked');
+				} else if (btn === doneBtn){
+					filterElementsByClass('.to-do-item');
+				};
+		};
+		let btns = document.getElementsByClassName('button')
+			for(var i = 0; i < btns.length; i++){
+				btns[i].addEventListener('click', clickedFunc);
+			};
+	};
+
+	btnHandler(allBtn);
+	btnHandler(notDoneBtn);
+	btnHandler(doneBtn);
+	
 /*Функция фильтрации 'Все'*/
 	allBtn.addEventListener('click', function(){
 		allBtn.classList.toggle('clicked');
@@ -117,11 +135,8 @@ window.onload = function(){
 		notDoneBtn.classList.toggle('clicked');
 		allBtn.className = 'all-btn';
 		doneBtn.className = 'done-btn';
-		if (notDoneBtn.classList.contains('clicked')){
-			resetFilterSettings();
-			searchElementsByClass('.to-do-checked');
-			
-		};
+		resetFilterSettings();
+		filterElementsByClass('.to-do-checked');
 		/*if (checkHandler()){
 
 		}*/
@@ -132,9 +147,7 @@ window.onload = function(){
 		doneBtn.classList.toggle('clicked');
 		allBtn.className = 'all-btn';
 		notDoneBtn.className = 'not-done-btn';
-		if (doneBtn.classList.contains('clicked')){	
-			resetFilterSettings();	
-			searchElementsByClass('.to-do-item');		
-		};
+		resetFilterSettings();	
+		filterElementsByClass('.to-do-item');		
 	});
 }
