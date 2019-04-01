@@ -102,52 +102,28 @@ window.onload = function(){
 			toDoItem_array.forEach(curVal => curVal.classList.add('filtered'));
 	};
 
+/*Функция удаления класса*/
+	let removeClass = function(){
+		let clickedItem = document.querySelectorAll('.clicked');
+		let clickedItem_array = Array.from(clickedItem);
+		let clickedItem_result = clickedItem_array.forEach(curVal => curVal.classList.remove('clicked'));
+		return clickedItem_result;
+	};
+
+/*Функция-обработчик кнопок фильтрации*/
 	let btnHandler = function(btn){
-		function clickedFunc(e){
-			e.currentTarget.classList.add('clicked');
+		btn.addEventListener('click', function clickedFunc(e){
 			resetFilterSettings();
+			removeClass();
+			e.currentTarget.classList.add('clicked');
 				if (btn === notDoneBtn) {
 					filterElementsByClass('.to-do-checked');
 				} else if (btn === doneBtn){
 					filterElementsByClass('.to-do-item');
 				};
-		};
-		let btns = document.getElementsByClassName('button')
-			for(var i = 0; i < btns.length; i++){
-				btns[i].addEventListener('click', clickedFunc);
-			};
+		});
 	};
-
 	btnHandler(allBtn);
 	btnHandler(notDoneBtn);
 	btnHandler(doneBtn);
-	
-/*Функция фильтрации 'Все'*/
-	allBtn.addEventListener('click', function(){
-		allBtn.classList.toggle('clicked');
-		notDoneBtn.className = 'not-done-btn';
-		doneBtn.className = 'done-btn';
-		resetFilterSettings();	
-	});
-
-/*Функция фильтрации 'Несделанные'*/
-	notDoneBtn.addEventListener('click', function(){
-		notDoneBtn.classList.toggle('clicked');
-		allBtn.className = 'all-btn';
-		doneBtn.className = 'done-btn';
-		resetFilterSettings();
-		filterElementsByClass('.to-do-checked');
-		/*if (checkHandler()){
-
-		}*/
-	});
-
-/*Функция фильтрации 'Сделанные'*/
-	doneBtn.addEventListener('click', function(){
-		doneBtn.classList.toggle('clicked');
-		allBtn.className = 'all-btn';
-		notDoneBtn.className = 'not-done-btn';
-		resetFilterSettings();	
-		filterElementsByClass('.to-do-item');		
-	});
 }
