@@ -103,7 +103,7 @@ window.onload = function(){
 	};
 
 /*Функция удаления класса*/
-	let removeClass = function(){
+	let resetClickedBtns = function(){
 		let clickedItem = document.querySelectorAll('.clicked');
 		let clickedItem_array = Array.from(clickedItem);
 		let clickedItem_result = clickedItem_array.forEach(curVal => curVal.classList.remove('clicked'));
@@ -111,19 +111,18 @@ window.onload = function(){
 	};
 
 /*Функция-обработчик кнопок фильтрации*/
-	let btnHandler = function(btn){
-		btn.addEventListener('click', function clickedFunc(e){
-			resetFilterSettings();
-			removeClass();
-			e.currentTarget.classList.add('clicked');
-				if (btn === notDoneBtn) {
-					filterElementsByClass('.to-do-checked');
-				} else if (btn === doneBtn){
-					filterElementsByClass('.to-do-item');
-				};
-		});
+	function handleBtnClick(event){
+		resetFilterSettings();
+		resetClickedBtns();
+		event.currentTarget.classList.add('clicked');
+			if (event.target === notDoneBtn) {
+				filterElementsByClass('.to-do-checked');
+			} else if (event.target === doneBtn){
+				filterElementsByClass('.to-do-item');
+			};
 	};
-	btnHandler(allBtn);
-	btnHandler(notDoneBtn);
-	btnHandler(doneBtn);
+
+	allBtn.addEventListener('click', handleBtnClick);
+	notDoneBtn.addEventListener('click', handleBtnClick);
+	doneBtn.addEventListener('click', handleBtnClick);
 }
