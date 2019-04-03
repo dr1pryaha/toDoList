@@ -44,7 +44,7 @@ window.onload = function(){
 /*Функция выделения заметки*/
 		let checkHandler = checkBox.addEventListener('change', function (){
 			if (checkBox.checked) {
-				div.className = 'to-do-checked';
+				div.className = 'checked';
 				icon.className = 'fa-checked fa fa-window-close';
 				iconBox.className = 'fa fa-check-circle';
 				checkBox.className = 'checkbox-checked';
@@ -65,7 +65,7 @@ window.onload = function(){
 
 /*Функция проверки одинаковых дел*/
 	let areThereSameTodos = function(){
-		let toDoItem_list = document.querySelectorAll('.to-do-item');
+		let toDoItem_list = document.querySelectorAll('.to-do-item, .checked');
 		let toDoItem_array = Array.from(toDoItem_list);
 		let toDoItem_result = toDoItem_array.some(curVal => curVal.textContent === inputField.value);
 		return toDoItem_result;
@@ -121,7 +121,7 @@ window.onload = function(){
 		resetClickedBtns();
 		event.currentTarget.classList.add('clicked');
 			if (event.target === notDoneBtn) {
-				filterElementsByClass('.to-do-checked');
+				filterElementsByClass('.checked');
 			} else if (event.target === doneBtn){
 				filterElementsByClass('.to-do-item');
 			};

@@ -36,7 +36,7 @@ h1 {
 }
 
 /*Выпадающий список*/
-.to-do-list .to-do-item, .to-do-checked {
+.to-do-list .to-do-item, .checked {
 	width: 475px;
 	height: 20px;
 	display: flex;
@@ -84,7 +84,7 @@ h1 {
 	opacity: 0;	
 }
 
-.to-do-checked {
+.checked {
 	text-decoration: line-through;
 	opacity: 0.5;
 }
