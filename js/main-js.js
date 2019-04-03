@@ -36,6 +36,8 @@ window.onload = function(){
 		iconBox.for = 'chk';
 		div.appendChild(iconBox);
 
+		allBtn.classList.add('clicked');
+		allBtn.click;
 
 /*Функция удаления по нажатию на клавишу мыши*/
 		let clickHandler = icon.addEventListener('click', function (){
@@ -49,11 +51,17 @@ window.onload = function(){
 				icon.className = 'fa-checked fa fa-window-close';
 				iconBox.className = 'fa fa-check-circle';
 				checkBox.className = 'checkbox-checked';
+				if (notDoneBtn.classList.contains('clicked') || doneBtn.classList.contains('clicked')) {
+					div.classList.add('filtered');
+				};
 			} else {
 				div.className = 'to-do-item';
 				icon.className = 'fa fa-window-close';
 				checkBox.className = 'checkbox';
 				iconBox.className = 'fa fa-circle-thin';
+				if (notDoneBtn.classList.contains('clicked') || doneBtn.classList.contains('clicked')) {
+					div.classList.add('filtered');
+				};
 			};
 		});
 	};
@@ -124,5 +132,5 @@ window.onload = function(){
 
 	allBtn.addEventListener('click', handleBtnClick);
 	notDoneBtn.addEventListener('click', handleBtnClick);
-	doneBtn.addEventListener('click', handleBtnClick);
+	doneBtn.addEventListener('click', handleBtnClick);	
 }
