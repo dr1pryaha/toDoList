@@ -36,7 +36,7 @@ h1 {
 }
 
 /*Выпадающий список*/
-.to-do-item, .to-do-item.checked {
+.to-do-item {
 	width: 475px;
 	height: 20px;
 	display: flex;
@@ -60,7 +60,7 @@ h1 {
 	position: absolute;
 	height: auto;
 	width: auto;
-	left: 95%;
+	left: 475px;
 	bottom: 6px;
 	color: #C44732;
 }
@@ -76,7 +76,7 @@ h1 {
 	color: #5DC2AF;
 }
 
-.checkbox, .checkbox.checked {
+.checkbox {
 	position: absolute;
 	height: auto;
 	width: auto;
@@ -84,7 +84,7 @@ h1 {
 	opacity: 0;	
 }
 
-.checked {
+.to-do-item.checked {
 	text-decoration: line-through;
 	opacity: 0.5;
 }
@@ -99,7 +99,7 @@ h1 {
 	top: 45px;
 }
 
-.button-list * {
+.button-list .button {
 	display: flex;
 	height: 25px;
 	margin: auto;
@@ -110,7 +110,7 @@ h1 {
 	outline:none;
 }
 
-.clicked {
+.button.clicked {
 	display: flex;
 	height: 25px;
 	margin: auto;

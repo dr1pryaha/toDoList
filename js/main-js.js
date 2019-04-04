@@ -65,7 +65,7 @@ window.onload = function(){
 
 /*Функция проверки одинаковых дел*/
 	let areThereSameTodos = function(){
-		let toDoItem_list = document.querySelectorAll('.to-do-item, .checked');
+		let toDoItem_list = document.querySelectorAll('.to-do-item');
 		let toDoItem_array = Array.from(toDoItem_list);
 		let toDoItem_result = toDoItem_array.some(curVal => curVal.textContent === inputField.value);
 		return toDoItem_result;
