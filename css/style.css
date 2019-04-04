@@ -36,7 +36,7 @@ h1 {
 }
 
 /*Выпадающий список*/
-.to-do-list .to-do-item, .checked {
+.to-do-item, .to-do-item.checked {
 	width: 475px;
 	height: 20px;
 	display: flex;
@@ -76,7 +76,7 @@ h1 {
 	color: #5DC2AF;
 }
 
-.checkbox, .checkbox-checked {
+.checkbox, .checkbox.checked {
 	position: absolute;
 	height: auto;
 	width: auto;
@@ -119,10 +119,6 @@ h1 {
 	border-radius: 10px;
 	background-color: #ffffff;
 	outline:none;
-}
-
-.filtered {
-	display: none;
 }
 
 .to-do-item.filtered {

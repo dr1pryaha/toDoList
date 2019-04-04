@@ -44,17 +44,17 @@ window.onload = function(){
 /*Функция выделения заметки*/
 		let checkHandler = checkBox.addEventListener('change', function (){
 			if (checkBox.checked) {
-				div.className = 'checked';
+				div.classList.add('checked');
 				icon.className = 'fa-checked fa fa-window-close';
 				iconBox.className = 'fa fa-check-circle';
-				checkBox.className = 'checkbox-checked';
+				checkBox.classList.add('checked');
 				if (notDoneBtn.classList.contains('clicked')) {
 					div.classList.add('filtered');
 				};
 			} else {
-				div.className = 'to-do-item';
+				div.classList.remove('checked');
 				icon.className = 'fa fa-window-close';
-				checkBox.className = 'checkbox';
+				checkBox.classList.remove('checked');
 				iconBox.className = 'fa fa-circle-thin';
 				if (doneBtn.classList.contains('clicked')) {
 					div.classList.add('filtered');
@@ -121,13 +121,13 @@ window.onload = function(){
 		resetClickedBtns();
 		event.currentTarget.classList.add('clicked');
 			if (event.target === notDoneBtn) {
-				filterElementsByClass('.checked');
+				filterElementsByClass('.to-do-item.checked');
 			} else if (event.target === doneBtn){
-				filterElementsByClass('.to-do-item');
+				filterElementsByClass('.to-do-item:not(.checked)');
 			};
 	};
 
 	allBtn.addEventListener('click', handleBtnClick);
 	notDoneBtn.addEventListener('click', handleBtnClick);
-	doneBtn.addEventListener('click', handleBtnClick);	
+	doneBtn.addEventListener('click', handleBtnClick);
 }
